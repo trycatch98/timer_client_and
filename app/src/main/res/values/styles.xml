@@ -7,4 +7,41 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="TextBase">
+    </style>
+
+    <style name="TextMainTimer" parent="TextBase">
+        <item name="android:textSize">30sp</item>
+        <item name="android:textColor">@color/colorTimer</item>
+        <item name="android:fontFamily">@font/noto_sans_cjk_kr_black</item>
+    </style>
+
+    <style name="TextSubTimer" parent="TextMainTimer">
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="TextHeader" parent="TextBase">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/colorHeader</item>
+        <item name="android:fontFamily">@font/noto_sans_cjk_kr_bold</item>
+    </style>
+
+    <style name="TextTitle" parent="TextBase">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/colorTitle</item>
+        <item name="android:fontFamily">@font/noto_sans_cjk_kr_bold</item>
+    </style>
+
+    <style name="TextBody" parent="TextBase">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/colorBody</item>
+        <item name="android:fontFamily">@font/noto_sans_cjk_kr_regular</item>
+    </style>
+
+    <style name="TextSubInfo" parent="TextBase">
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">@color/colorSubInfo</item>
+        <item name="android:fontFamily">@font/noto_sans_cjk_kr_regular</item>
+    </style>
+
 </resources>
