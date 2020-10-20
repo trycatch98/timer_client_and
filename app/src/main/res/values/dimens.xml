@@ -6,4 +6,5 @@
     <dimen name="mainTaskBottomMargin">30dp</dimen>
     <dimen name="scrollBottomMargin">150dp</dimen>
     <dimen name="swipeClamp">70dp</dimen>
+    <dimen name="itemOffset">15dp</dimen>
 </resources>
