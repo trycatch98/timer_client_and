@@ -1,4 +1,4 @@
-package com.twomin.timerclient.ui.base
+package com.twomin.timerclient.ui.common
 
 import android.os.Bundle
 import android.view.LayoutInflater
