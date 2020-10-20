@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="navHeight">80dp</dimen>
+    <dimen name="navMargin">20dp</dimen>
+    <dimen name="taskMargin">10dp</dimen>
+    <dimen name="mainTaskBottomMargin">30dp</dimen>
+    <dimen name="scrollBottomMargin">150dp</dimen>
+</resources>
