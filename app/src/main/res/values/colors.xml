@@ -20,6 +20,8 @@
     <color name="colorBackground2">@color/colorPaleGrey</color>
     <color name="colorBackground3">@color/colorWhite</color>
 
+    <color name="colorShadow">#0d454b55</color>
+
     <color name="colorRichBlue">#0a23fb</color>
     <color name="colorLightishRed">#F24150</color>
     <color name="colorLightSeafoam">#a3f5c3</color>
