@@ -2,6 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
+        <import type="android.view.View"/>
         <variable
             name="vm"
             type="com.twomin.timerclient.ui.main.MainViewModel" />
@@ -46,6 +47,7 @@
             android:src="@drawable/ic_history"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="4dp"
+            android:onClick="@{() -> vm.clickHistory()}"
             app:layout_constraintEnd_toStartOf="@id/setting"
             app:layout_constraintBottom_toBottomOf="@id/nav_bottom_guide"/>
 
@@ -56,6 +58,7 @@
             android:src="@drawable/ic_settings"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="4dp"
+            android:onClick="@{() -> vm.clickSetting()}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="@id/nav_bottom_guide"/>
 
@@ -84,9 +87,10 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/empty_timer_description"
+                        android:text="@string/empty_time_set_description"
                         android:theme="@style/TextSubInfo"
                         android:textSize="12sp"
+                        android:visibility="@{vm.recentTimeSet.empty &amp;&amp; vm.saveTimeSet.empty ? View.VISIBLE : View.GONE}"
                         android:layout_marginBottom="@dimen/navMargin"
                         android:layout_marginStart="33dp"/>
 
@@ -95,13 +99,14 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:layout_marginBottom="40dp">
+                        android:layout_marginBottom="40dp"
+                        android:visibility="@{vm.recentTimeSet.empty ? View.GONE : View.VISIBLE}">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:theme="@style/TextTitle"
-                            android:text="@string/recent_timer_header"
+                            android:text="@string/recent_time_set_header"
                             android:layout_marginStart="33dp"/>
 
                         <androidx.recyclerview.widget.RecyclerView
@@ -118,7 +123,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:layout_marginBottom="40dp">
+                        android:layout_marginBottom="40dp"
+                        android:visibility="@{vm.saveTimeSet.empty ? View.GONE : View.VISIBLE}">
                         
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -132,7 +138,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:theme="@style/TextTitle"
-                                android:text="@{@string/save_timer_header(1)}"/>
+                                android:text="@{@string/save_time_set_header(vm.saveTimeSet.size())}"/>
                             
                             <LinearLayout
                                 android:layout_width="wrap_content"
@@ -144,7 +150,8 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:theme="@style/TextBody"
-                                    android:text="@string/management_timer_text" />
+                                    android:text="@string/management_time_set_text"
+                                    android:onClick="@{() -> vm.manageTimeSet()}"/>
                                 
                                 <View
                                     android:layout_width="match_parent"
@@ -175,7 +182,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:theme="@style/TextTitle"
-                            android:text="@string/preset_timer_header"
+                            android:text="@string/preset_time_set_header"
                             android:layout_marginStart="33dp"/>
 
                         <androidx.recyclerview.widget.RecyclerView
@@ -227,6 +234,7 @@
                             android:text="@string/task_preset_text"
                             android:theme="@style/TextTitle"
                             android:gravity="center"
+                            android:onClick="@{() -> vm.clickPreSet()}"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintEnd_toStartOf="@id/divide_guide"/>
 
@@ -239,6 +247,7 @@
                             android:theme="@style/TextTitle"
                             android:textColor="@color/colorWhite"
                             android:gravity="center"
+                            android:onClick="@{() -> vm.createTimeSet()}"
                             app:layout_constraintStart_toEndOf="@id/divide_guide"
                             app:layout_constraintEnd_toEndOf="parent"/>
 

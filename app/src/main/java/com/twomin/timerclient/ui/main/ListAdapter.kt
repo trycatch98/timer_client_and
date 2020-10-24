@@ -2,59 +2,66 @@ package com.twomin.timerclient.ui.main
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import androidx.viewbinding.ViewBinding
 import com.twomin.timerclient.BR
-import com.twomin.timerclient.Timer
-import com.twomin.timerclient.TimerType
-import com.twomin.timerclient.databinding.ItemHourTimerBinding
-import com.twomin.timerclient.databinding.ItemMinuteTimerBinding
-import com.twomin.timerclient.databinding.ItemSecondTimerBinding
+import com.twomin.timerclient.TimeSet
+import com.twomin.timerclient.TimeSetType
+import com.twomin.timerclient.databinding.ItemHourTimeSetBinding
+import com.twomin.timerclient.databinding.ItemMinuteTimeSetBinding
+import com.twomin.timerclient.databinding.ItemSecondTimeSetBinding
+import kotlinx.android.synthetic.main.item_hour_time_set.view.*
 
-abstract class BaseAdapter : ListAdapter<Timer, BaseAdapter.BaseViewHolder>(DiffCallback()) {
+abstract class BaseAdapter : ListAdapter<TimeSet, BaseAdapter.BaseViewHolder>(DiffCallback()) {
     companion object {
         private const val VIEW_TYPE_HOUR = 0
         private const val VIEW_TYPE_MINUTE = 1
         private const val VIEW_TYPE_SECOND = 2
     }
 
-    class DiffCallback : DiffUtil.ItemCallback<Timer>() {
-        override fun areItemsTheSame(oldItem: Timer, newItem: Timer): Boolean {
+    class DiffCallback : DiffUtil.ItemCallback<TimeSet>() {
+        override fun areItemsTheSame(oldItem: TimeSet, newItem: TimeSet): Boolean {
             return oldItem == newItem
         }
 
-        override fun areContentsTheSame(oldItem: Timer, newItem: Timer): Boolean {
+        override fun areContentsTheSame(oldItem: TimeSet, newItem: TimeSet): Boolean {
             return oldItem.id == newItem.id
         }
     }
 
-    interface ItemClickListener {
-        fun onClickItem(item: String, position: Int)
+    interface OnItemClickListener {
+        fun onClickItem(item: TimeSet)
     }
 
-    private var onItemClickListener: ItemClickListener? = null
+    interface OnTaskClickListener {
+        fun onHideItem(item: TimeSet)
+        fun onDeleteItem(item: TimeSet)
+    }
+
+    private var itemClickListener: OnItemClickListener? = null
+    protected var taskClickListener: OnTaskClickListener? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
         val binding = when (viewType) {
             VIEW_TYPE_HOUR -> {
-                ItemHourTimerBinding.inflate(
+                ItemHourTimeSetBinding.inflate(
                     LayoutInflater.from(parent.context),
                     parent,
                     false
                 )
             }
             VIEW_TYPE_MINUTE -> {
-                ItemMinuteTimerBinding.inflate(
+                ItemMinuteTimeSetBinding.inflate(
                     LayoutInflater.from(parent.context),
                     parent,
                     false
                 )
             }
             VIEW_TYPE_SECOND -> {
-                ItemSecondTimerBinding.inflate(
+                ItemSecondTimeSetBinding.inflate(
                     LayoutInflater.from(parent.context),
                     parent,
                     false
@@ -73,16 +80,28 @@ abstract class BaseAdapter : ListAdapter<Timer, BaseAdapter.BaseViewHolder>(Diff
 
     override fun getItemViewType(position: Int): Int {
         return when (getItem(position).type) {
-            is TimerType.HourTimer -> VIEW_TYPE_HOUR
-            is TimerType.MinuteTimer -> VIEW_TYPE_MINUTE
-            is TimerType.SecondTimer -> VIEW_TYPE_SECOND
+            is TimeSetType.HourTimeSet -> VIEW_TYPE_HOUR
+            is TimeSetType.MinuteTimeSet -> VIEW_TYPE_MINUTE
+            is TimeSetType.SecondTimeSet -> VIEW_TYPE_SECOND
         }
     }
 
-    fun setOnItemClickListener(onItemClickListener: (String, Int) -> Unit) {
-        this.onItemClickListener = object : ItemClickListener {
-            override fun onClickItem(item: String, position: Int) {
-                onItemClickListener(item, position)
+    fun setOnItemClickListener(onItemClickListener: (TimeSet) -> Unit) {
+        this.itemClickListener = object : OnItemClickListener {
+            override fun onClickItem(item: TimeSet) {
+                onItemClickListener(item)
+            }
+        }
+    }
+
+    fun setOnTaskClickListener(onTaskClickListener: OnTaskClickListener) {
+        this.taskClickListener = object : OnTaskClickListener {
+            override fun onHideItem(item: TimeSet) {
+                onTaskClickListener.onHideItem(item)
+            }
+
+            override fun onDeleteItem(item: TimeSet) {
+                onTaskClickListener.onDeleteItem(item)
             }
         }
     }
@@ -90,35 +109,42 @@ abstract class BaseAdapter : ListAdapter<Timer, BaseAdapter.BaseViewHolder>(Diff
     abstract fun createViewHolder(binding: ViewDataBinding): BaseViewHolder
 
     open class BaseViewHolder(private val binding: ViewDataBinding) : RecyclerView.ViewHolder(binding.root) {
-        open fun bind(timer: Timer) {
-            binding.setVariable(BR.timer, timer)
+        open fun bind(timeSet: TimeSet) {
+            binding.setVariable(BR.timeSet, timeSet)
         }
     }
 }
 
-class RecentTimerAdapter : BaseAdapter() {
+class RecentTimeSetAdapter : BaseAdapter() {
+
     override fun createViewHolder(binding: ViewDataBinding) = RecentViewHolder(binding)
 
-    class RecentViewHolder(private val binding: ViewDataBinding) : BaseViewHolder(binding) {
-        override fun bind(timer: Timer) {
-            super.bind(timer)
+    inner class RecentViewHolder(private val binding: ViewDataBinding) : BaseViewHolder(binding) {
+        override fun bind(timeSet: TimeSet) {
+            super.bind(timeSet)
             binding.setVariable(BR.task, "삭제")
+            itemView.task.setOnClickListener {
+                taskClickListener?.onDeleteItem(timeSet)
+            }
         }
     }
 }
 
-class SaveTimerAdapter : BaseAdapter() {
+class SaveTimeSetAdapter : BaseAdapter() {
     override fun createViewHolder(binding: ViewDataBinding) = RecentViewHolder(binding)
 
-    class RecentViewHolder(private val binding: ViewDataBinding) : BaseViewHolder(binding) {
-        override fun bind(timer: Timer) {
-            super.bind(timer)
+    inner class RecentViewHolder(private val binding: ViewDataBinding) : BaseViewHolder(binding) {
+        override fun bind(timeSet: TimeSet) {
+            super.bind(timeSet)
             binding.setVariable(BR.task, "숨김")
+            itemView.task.setOnClickListener {
+                taskClickListener?.onHideItem(timeSet)
+            }
         }
     }
 }
 
-class PresetTimerAdapter : BaseAdapter() {
+class PresetTimeSetAdapter : BaseAdapter() {
     override fun createViewHolder(binding: ViewDataBinding) = RecentViewHolder(binding)
 
     class RecentViewHolder(private val binding: ViewDataBinding) : BaseViewHolder(binding)

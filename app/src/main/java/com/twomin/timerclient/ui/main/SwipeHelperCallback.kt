@@ -5,7 +5,7 @@ import android.view.View
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.ItemTouchHelper.*
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.item_hour_timer.view.*
+import kotlinx.android.synthetic.main.item_hour_time_set.view.*
 import kotlin.math.max
 import kotlin.math.min
 

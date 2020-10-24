@@ -1,13 +1,13 @@
 <resources>
     <string name="app_name">2min</string>
-    <string name="empty_timer_description">아직 나만의 타이머가 없어요 :-)\n대신 인기 타이머를 추천드릴게요!</string>
-    <string name="recent_timer_header">최근</string>
-    <string name="save_timer_header">저장 (%1$s)</string>
-    <string name="preset_timer_header">프리셋 TOP 10</string>
-    <string name="management_timer_text">관리</string>
+    <string name="empty_time_set_description">아직 나만의 타이머가 없어요 :-)\n대신 인기 타이머를 추천드릴게요!</string>
+    <string name="recent_time_set_header">최근</string>
+    <string name="save_time_set_header">저장 (%1$s)</string>
+    <string name="preset_time_set_header">프리셋 TOP 10</string>
+    <string name="management_time_set_text">관리</string>
     <string name="task_preset_text">프리셋</string>
     <string name="task_create_timer_text">타이머 만들기</string>
-    <string name="hour_timer_format">%1$s시간 %2$s분 %3$s초</string>
-    <string name="minute_timer_format">%1$s분 %2$s초</string>
-    <string name="second_timer_format">%1$s초</string>
+    <string name="hour_time_set_format">%1$s시간 %2$s분 %3$s초</string>
+    <string name="minute_time_set_format">%1$s분 %2$s초</string>
+    <string name="second_time_set_format">%1$s초</string>
 </resources>
