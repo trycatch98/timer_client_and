@@ -202,6 +202,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
+                app:layout_behavior=".ui.common.FloatingBehavior"
                 android:layout_gravity="bottom|center_horizontal"
                 android:layout_marginBottom="@dimen/mainTaskBottomMargin"
                 android:layout_marginStart="25dp"
