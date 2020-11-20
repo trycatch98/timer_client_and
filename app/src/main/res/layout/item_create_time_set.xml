@@ -1,0 +1,405 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="vm"
+            type="com.twomin.timerclient.ui.timeset.create.TimerPageViewModel" />
+        <variable
+            name="timer"
+            type="com.twomin.timerclient.Timer" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/card_bottom_guide"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.867"/>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/createTimerItemHeight"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="22dp"
+            android:layout_marginEnd="22dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:cardCornerRadius="24dp"
+            app:cardElevation="12dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/title_top_guide"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.059"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/TextTitle"
+                    android:fontFamily="@font/noto_sans_cjk_kr_regular"
+                    android:layout_marginStart="30dp"
+                    app:layout_constraintTop_toTopOf="@id/title_top_guide"
+                    app:layout_constraintStart_toStartOf="parent"/>
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/time_top_guide"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.125"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:theme="@style/TextSubTimer"
+                    android:text="0시간 0분 0초"
+                    app:layout_constraintTop_toBottomOf="@id/time_top_guide"
+                    app:layout_constraintStart_toStartOf="parent"/>
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/divide_top_guide"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.205"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorLine2"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginEnd="30dp"
+                    app:layout_constraintTop_toTopOf="@id/divide_top_guide"/>
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/key_pad_top_guide"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.226"/>
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/key_pad_first_row_top_guide"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.226"/>
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/key_pad_first_row_bottom_guide"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.339"/>
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/key_pad_first_col_start_guide"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.127"/>
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/key_pad_first_col_end_guide"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.279"/>
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/key_pad_second_row_top_guide"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.35"/>
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/key_pad_second_row_bottom_guide"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.463"/>
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/key_pad_second_col_start_guide"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.422"/>
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/key_pad_second_col_end_guide"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.574"/>
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/key_pad_third_row_top_guide"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.475"/>
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/key_pad_third_row_bottom_guide"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.588"/>
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/key_pad_third_col_start_guide"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.717"/>
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/key_pad_third_col_end_guide"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.873"/>
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/key_pad_fourth_row_top_guide"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.6"/>
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/key_pad_fourth_row_bottom_guide"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.713"/>
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/key_pad_fifth_row_top_guide"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.724"/>
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/key_pad_fifth_row_bottom_guide"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.838"/>
+
+                <TextView
+                    android:id="@+id/number_pad_1"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:fontFamily="@font/noto_sans_cjk_kr_regular"
+                    android:theme="@style/TextSubTimer"
+                    android:text="1"
+                    android:gravity="center"
+                    app:layout_constraintTop_toTopOf="@id/key_pad_first_row_top_guide"
+                    app:layout_constraintBottom_toBottomOf="@id/key_pad_first_row_bottom_guide"
+                    app:layout_constraintStart_toStartOf="@id/key_pad_first_col_start_guide"
+                    app:layout_constraintEnd_toEndOf="@id/key_pad_first_col_end_guide"/>
+
+                <TextView
+                    android:id="@+id/number_pad_2"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:fontFamily="@font/noto_sans_cjk_kr_regular"
+                    android:theme="@style/TextSubTimer"
+                    android:text="2"
+                    android:gravity="center"
+                    app:layout_constraintTop_toTopOf="@id/key_pad_first_row_top_guide"
+                    app:layout_constraintBottom_toBottomOf="@id/key_pad_first_row_bottom_guide"
+                    app:layout_constraintStart_toStartOf="@id/key_pad_second_col_start_guide"
+                    app:layout_constraintEnd_toEndOf="@id/key_pad_second_col_end_guide"/>
+
+                <TextView
+                    android:id="@+id/number_pad_3"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:fontFamily="@font/noto_sans_cjk_kr_regular"
+                    android:theme="@style/TextSubTimer"
+                    android:text="3"
+                    android:gravity="center"
+                    app:layout_constraintTop_toTopOf="@id/key_pad_first_row_top_guide"
+                    app:layout_constraintBottom_toBottomOf="@id/key_pad_first_row_bottom_guide"
+                    app:layout_constraintStart_toStartOf="@id/key_pad_third_col_start_guide"
+                    app:layout_constraintEnd_toEndOf="@id/key_pad_third_col_end_guide"/>
+
+                <TextView
+                    android:id="@+id/number_pad_4"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:fontFamily="@font/noto_sans_cjk_kr_regular"
+                    android:theme="@style/TextSubTimer"
+                    android:text="4"
+                    android:gravity="center"
+                    app:layout_constraintTop_toTopOf="@id/key_pad_second_row_top_guide"
+                    app:layout_constraintBottom_toBottomOf="@id/key_pad_second_row_bottom_guide"
+                    app:layout_constraintStart_toStartOf="@id/key_pad_first_col_start_guide"
+                    app:layout_constraintEnd_toEndOf="@id/key_pad_first_col_end_guide"/>
+
+                <TextView
+                    android:id="@+id/number_pad_5"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:fontFamily="@font/noto_sans_cjk_kr_regular"
+                    android:theme="@style/TextSubTimer"
+                    android:text="5"
+                    android:gravity="center"
+                    app:layout_constraintTop_toTopOf="@id/key_pad_second_row_top_guide"
+                    app:layout_constraintBottom_toBottomOf="@id/key_pad_second_row_bottom_guide"
+                    app:layout_constraintStart_toStartOf="@id/key_pad_second_col_start_guide"
+                    app:layout_constraintEnd_toEndOf="@id/key_pad_second_col_end_guide"/>
+
+                <TextView
+                    android:id="@+id/number_pad_6"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:fontFamily="@font/noto_sans_cjk_kr_regular"
+                    android:theme="@style/TextSubTimer"
+                    android:text="6"
+                    android:gravity="center"
+                    app:layout_constraintTop_toTopOf="@id/key_pad_second_row_top_guide"
+                    app:layout_constraintBottom_toBottomOf="@id/key_pad_second_row_bottom_guide"
+                    app:layout_constraintStart_toStartOf="@id/key_pad_third_col_start_guide"
+                    app:layout_constraintEnd_toEndOf="@id/key_pad_third_col_end_guide"/>
+
+                <TextView
+                    android:id="@+id/number_pad_7"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:fontFamily="@font/noto_sans_cjk_kr_regular"
+                    android:theme="@style/TextSubTimer"
+                    android:text="7"
+                    android:gravity="center"
+                    app:layout_constraintTop_toTopOf="@id/key_pad_third_row_top_guide"
+                    app:layout_constraintBottom_toBottomOf="@id/key_pad_third_row_bottom_guide"
+                    app:layout_constraintStart_toStartOf="@id/key_pad_first_col_start_guide"
+                    app:layout_constraintEnd_toEndOf="@id/key_pad_first_col_end_guide"/>
+
+                <TextView
+                    android:id="@+id/number_pad_8"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:fontFamily="@font/noto_sans_cjk_kr_regular"
+                    android:theme="@style/TextSubTimer"
+                    android:text="8"
+                    android:gravity="center"
+                    app:layout_constraintTop_toTopOf="@id/key_pad_third_row_top_guide"
+                    app:layout_constraintBottom_toBottomOf="@id/key_pad_third_row_bottom_guide"
+                    app:layout_constraintStart_toStartOf="@id/key_pad_second_col_start_guide"
+                    app:layout_constraintEnd_toEndOf="@id/key_pad_second_col_end_guide"/>
+
+                <TextView
+                    android:id="@+id/number_pad_9"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:fontFamily="@font/noto_sans_cjk_kr_regular"
+                    android:theme="@style/TextSubTimer"
+                    android:text="9"
+                    android:gravity="center"
+                    app:layout_constraintTop_toTopOf="@id/key_pad_third_row_top_guide"
+                    app:layout_constraintBottom_toBottomOf="@id/key_pad_third_row_bottom_guide"
+                    app:layout_constraintStart_toStartOf="@id/key_pad_third_col_start_guide"
+                    app:layout_constraintEnd_toEndOf="@id/key_pad_third_col_end_guide"/>
+
+                <TextView
+                    android:id="@+id/number_pad_0"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:fontFamily="@font/noto_sans_cjk_kr_regular"
+                    android:theme="@style/TextSubTimer"
+                    android:text="0"
+                    android:gravity="center"
+                    app:layout_constraintTop_toTopOf="@id/key_pad_fourth_row_top_guide"
+                    app:layout_constraintBottom_toBottomOf="@id/key_pad_fourth_row_bottom_guide"
+                    app:layout_constraintStart_toStartOf="@id/key_pad_second_col_start_guide"
+                    app:layout_constraintEnd_toEndOf="@id/key_pad_second_col_end_guide"/>
+
+                <TextView
+                    android:id="@+id/key_pad_time"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:fontFamily="@font/noto_sans_cjk_kr_regular"
+                    android:theme="@style/TextSubTimer"
+                    android:text="시간"
+                    android:gravity="center"
+                    app:layout_constraintTop_toTopOf="@id/key_pad_fifth_row_top_guide"
+                    app:layout_constraintBottom_toBottomOf="@id/key_pad_fifth_row_bottom_guide"
+                    app:layout_constraintStart_toStartOf="@id/key_pad_first_col_start_guide"
+                    app:layout_constraintEnd_toEndOf="@id/key_pad_first_col_end_guide"/>
+
+                <TextView
+                    android:id="@+id/key_pad_minute"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:fontFamily="@font/noto_sans_cjk_kr_regular"
+                    android:theme="@style/TextSubTimer"
+                    android:text="분"
+                    android:gravity="center"
+                    app:layout_constraintTop_toTopOf="@id/key_pad_fifth_row_top_guide"
+                    app:layout_constraintBottom_toBottomOf="@id/key_pad_fifth_row_bottom_guide"
+                    app:layout_constraintStart_toStartOf="@id/key_pad_second_col_start_guide"
+                    app:layout_constraintEnd_toEndOf="@id/key_pad_second_col_end_guide"/>
+
+                <TextView
+                    android:id="@+id/key_pad_second"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:fontFamily="@font/noto_sans_cjk_kr_regular"
+                    android:theme="@style/TextSubTimer"
+                    android:text="초"
+                    android:gravity="center"
+                    app:layout_constraintTop_toTopOf="@id/key_pad_fifth_row_top_guide"
+                    app:layout_constraintBottom_toBottomOf="@id/key_pad_fifth_row_bottom_guide"
+                    app:layout_constraintStart_toStartOf="@id/key_pad_third_col_start_guide"
+                    app:layout_constraintEnd_toEndOf="@id/key_pad_third_col_end_guide"/>
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/comment_top_guide"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.856"/>
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/comment_bottom_guide"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.941"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="28dp"
+                    android:layout_marginEnd="28dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="25dp"
+                    android:background="@color/colorCharcoalGrey"
+                    app:layout_constraintTop_toBottomOf="@id/key_pad_time"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

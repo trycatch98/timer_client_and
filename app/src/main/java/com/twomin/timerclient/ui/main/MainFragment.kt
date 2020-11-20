@@ -63,6 +63,13 @@ class MainFragment : BaseFragment<MainViewModel, FragmentMainBinding>(
         viewModel.presetTimeSet.observe(viewLifecycleOwner) {
             presetTimeSetAdapter.submitList(it)
         }
+
+        viewModel.createTimeSet.observe(viewLifecycleOwner) { event ->
+            event.getContentIfNotHandled()?.let {
+                val action = MainFragmentDirections.actionMainFragmentToCreateTimeSetFragment()
+                navController.navigate(action)
+            }
+        }
     }
 
     private fun initList(recyclerView: RecyclerView, listAdapter: BaseAdapter) {

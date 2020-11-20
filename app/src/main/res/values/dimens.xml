@@ -7,4 +7,26 @@
     <dimen name="scrollBottomMargin">150dp</dimen>
     <dimen name="swipeClamp">70dp</dimen>
     <dimen name="itemOffset">15dp</dimen>
+
+    <dimen name="createTimerItemTopMargin">10dp</dimen>
+    <dimen name="createTimerItemBottomMargin">10dp</dimen>
+    <dimen name="createTimerItemWidth">315dp</dimen>
+    <dimen name="createTimerItemHeight">425dp</dimen>
+
+    <dimen name="timerItemTopMargin">10dp</dimen>
+    <dimen name="timerItemBottomMargin">20dp</dimen>
+    <dimen name="timerItemHeight">425dp</dimen>
+    <dimen name="timerItemNumberTextTopMargin">25dp</dimen>
+    <dimen name="timerItemTimeTextTopMargin">53dp</dimen>
+    <dimen name="timerItemTimeInputTopMargin">60dp</dimen>
+    <dimen name="timerItemTimeInputEndMargin">30dp</dimen>
+    <dimen name="timerItemDivideTopMargin">87dp</dimen>
+    <dimen name="timerItemFirstRowTopMargin">96dp</dimen>
+    <dimen name="timerItemSecondRowTopMargin">149dp</dimen>
+    <dimen name="timerItemThirdRowTopMargin">202dp</dimen>
+    <dimen name="timerItemFourthRowTopMargin">255dp</dimen>
+    <dimen name="timerItemFifthRowTopMargin">308dp</dimen>
+    <dimen name="timerItemCommentTopMargin">364dp</dimen>
+    <dimen name="timerItemCommentBottomMargin">25dp</dimen>
+
 </resources>

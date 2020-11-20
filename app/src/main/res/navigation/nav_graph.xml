@@ -9,5 +9,15 @@
         android:id="@+id/mainFragment"
         android:name="com.twomin.timerclient.ui.main.MainFragment"
         android:label="MainFragment"
-        tools:layout="@layout/fragment_main" />
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/action_mainFragment_to_createTimeSetFragment"
+            app:destination="@id/createTimeSetFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/createTimeSetFragment"
+        android:name="com.twomin.timerclient.ui.timeset.create.CreateTimeSetFragment"
+        android:label="CreateTimeSetFragment"
+        tools:layout="@layout/fragment_create_time_set" />
 </navigation>

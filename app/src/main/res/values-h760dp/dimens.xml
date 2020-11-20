@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="navHeight">90dp</dimen>
+    <dimen name="navMargin">40dp</dimen>
+    <dimen name="mainTaskBottomMargin">60dp</dimen>
+    <dimen name="scrollBottomMargin">200dp</dimen>
+    <dimen name="createTimerItemTopMargin">10dp</dimen>
+    <dimen name="createTimerItemBottomMargin">20dp</dimen>
+    <dimen name="createTimerItemHeight">480dp</dimen>
+
+    <dimen name="timerItemBottomMargin">30dp</dimen>
+    <dimen name="timerItemHeight">480dp</dimen>
+    <dimen name="timerItemNumberTextTopMargin">30dp</dimen>
+    <dimen name="timerItemTimeTextTopMargin">67dp</dimen>
+    <dimen name="timerItemTimeInputTopMargin">74dp</dimen>
+    <dimen name="timerItemTimeInputEndMargin">35dp</dimen>
+    <dimen name="timerItemDivideTopMargin">101dp</dimen>
+    <dimen name="timerItemFirstRowTopMargin">117dp</dimen>
+    <dimen name="timerItemSecondRowTopMargin">175dp</dimen>
+    <dimen name="timerItemThirdRowTopMargin">233dp</dimen>
+    <dimen name="timerItemFourthRowTopMargin">291dp</dimen>
+    <dimen name="timerItemFifthRowTopMargin">349dp</dimen>
+    <dimen name="timerItemCommentTopMargin">414dp</dimen>
+    <dimen name="timerItemCommentBottomMargin">30dp</dimen>
+</resources>

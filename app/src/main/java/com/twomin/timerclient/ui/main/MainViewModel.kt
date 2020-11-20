@@ -6,16 +6,20 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.twomin.timerclient.TimeSet
 import com.twomin.timerclient.TimeSetType
+import com.twomin.timerclient.common.Event
 
 class MainViewModel @ViewModelInject constructor() : ViewModel() {
-    private val _recentTimeSet : MutableLiveData<List<TimeSet>> = MutableLiveData()
-    val recentTimeSet : LiveData<List<TimeSet>> get() = _recentTimeSet
+    private val _recentTimeSet: MutableLiveData<List<TimeSet>> = MutableLiveData()
+    val recentTimeSet: LiveData<List<TimeSet>> get() = _recentTimeSet
 
-    private val _saveTimeSet : MutableLiveData<List<TimeSet>> = MutableLiveData()
-    val saveTimeSet : LiveData<List<TimeSet>> get() = _saveTimeSet
+    private val _saveTimeSet: MutableLiveData<List<TimeSet>> = MutableLiveData()
+    val saveTimeSet: LiveData<List<TimeSet>> get() = _saveTimeSet
 
-    private val _presetTimeSet : MutableLiveData<List<TimeSet>> = MutableLiveData()
-    val presetTimeSet : LiveData<List<TimeSet>> get() = _presetTimeSet
+    private val _presetTimeSet: MutableLiveData<List<TimeSet>> = MutableLiveData()
+    val presetTimeSet: LiveData<List<TimeSet>> get() = _presetTimeSet
+    
+    private val _createTimeSet: MutableLiveData<Event<Unit>> = MutableLiveData()
+    val createTimeSet: LiveData<Event<Unit>> get() = _createTimeSet
 
     init {
         val timeSet = listOf(
@@ -59,7 +63,7 @@ class MainViewModel @ViewModelInject constructor() : ViewModel() {
     }
 
     fun createTimeSet() {
-
+        _createTimeSet.value = Event(Unit)
     }
 
     fun clickPreSet() {
